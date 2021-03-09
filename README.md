@@ -1,6 +1,6 @@
 # Tic-Tac-Toe_with_AI
 
-start the game with the command star player1 player2, where player can be:
+start the game with the command start player1 player2, where a player can be:
 user, easy, medium, hard
 
 user - you are playing
