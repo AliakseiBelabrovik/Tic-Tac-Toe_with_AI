@@ -12,8 +12,7 @@ public final class StateOfTheGame {
     //if input is exit - stops the loop and the game
     public static void startTheGame () throws InterruptedException {
         String[] input;
-        Player player1 = null;
-        Player player2 = null;
+        PlayerFactory playerFactory = new PlayerFactory();
         while (true) {
             //ask user for a command - exit or start
             input = Console.askForACommand();
@@ -22,28 +21,11 @@ public final class StateOfTheGame {
                 break;
 
             } else {
-                /*
-                if (input[0].equals("start") && (input[1].equals("easy") || input[1].equals("user")) &&
-            input[2].equals("user") || input[2].equals("easy")) {
-*/
-                GameBoard gameBoard = new GameBoard();
-                if (input[1].equals("user"))
-                    player1 = new User(input[1], 'X', 'O');
-                if (input[1].equals("easy"))
-                    player1 = new EasyLevel(input[1], 'X','O');
-                if (input[1].equals("medium"))
-                    player1 = new MediumLevel(input[1], 'X', 'O');
-                if (input[1].equals("hard"))
-                    player1 = new HardLevel(input[1], 'X','O');
 
-                if (input[2].equals("user"))
-                    player2 = new User(input[2], 'O','X');
-                if (input[2].equals("easy"))
-                    player2 = new EasyLevel(input[2], 'O','X');
-                if (input[2].equals("medium"))
-                    player2 = new MediumLevel(input[2], 'O', 'X');
-                if (input[2].equals("hard"))
-                    player2 = new HardLevel(input[2], 'O', 'X');
+                GameBoard gameBoard = new GameBoard();
+                Player player1 = playerFactory.getPlayer(input[1], 'X', 'O');
+                Player player2 = playerFactory.getPlayer(input[2], 'O','X');
+
 
                 //start playing the game
                 playingTheGame(gameBoard, player1, player2);
